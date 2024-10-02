@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [CommonModule],  // Asegúrate de importar el CommonModule
+  imports: [CommonModule], 
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css'],
 })
 export class CalendarioComponent implements OnInit {
   diasDisponibles: any[] = [];
 
-  constructor(private reservaService: ReservaService, private router: Router) {} // Inyecta Router
+  constructor(private reservaService: ReservaService, private router: Router) {}
 
   ngOnInit(): void {
     this.getReservas();

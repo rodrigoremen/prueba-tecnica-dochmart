@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaService } from '../service/reservas.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,10 +14,13 @@ export class HorarioComponent implements OnInit {
   fechaSeleccionada: string | null = null;
   horarios: any[] = [];
 
-  constructor(private route: ActivatedRoute, private reservaService: ReservaService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private reservaService: ReservaService) {}
 
   ngOnInit(): void {
+    // Obtener la fecha seleccionada de la ruta
     this.fechaSeleccionada = this.route.snapshot.paramMap.get('fecha');
+    
+    // Obtener los horarios de la fecha seleccionada
     if (this.fechaSeleccionada) {
       this.getHorarios(this.fechaSeleccionada);
     }
@@ -34,14 +37,8 @@ export class HorarioComponent implements OnInit {
 
   reservar(hora: string): void {
     if (this.fechaSeleccionada) {
-      this.reservaService.reservarHorario(this.fechaSeleccionada, hora).subscribe((success) => {
-        if (success) {
-          console.log('Reserva exitosa');
-          // Redirigir al resumen de la reserva o mostrar un mensaje
-        } else {
-          console.log('No se pudo realizar la reserva');
-        }
-      });
+      // Aquí redirigimos a la página de reserva con los datos de fecha y hora
+      this.router.navigate(['/reserva'], { state: { fecha: this.fechaSeleccionada, hora: hora } });
     }
   }
 }
