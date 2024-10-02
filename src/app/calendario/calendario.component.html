@@ -1,0 +1,16 @@
+<div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Calendario de Disponibilidad</h1>
+
+    <!-- Si no hay días disponibles, mostrar un mensaje -->
+    <div *ngIf="diasDisponibles.length === 0" class="text-red-500">No hay fechas disponibles ahora</div>
+
+    <!-- Mostrar el calendario solo si hay días -->
+    <div *ngIf="diasDisponibles.length > 0" class="grid grid-cols-7 gap-4">
+        <!-- Iteramos sobre los días disponibles -->
+        <div *ngFor="let dia of diasDisponibles" [class.bg-green-500]="dia.disponible"
+            [class.bg-red-500]="!dia.disponible" class="text-white p-2 rounded cursor-pointer"
+            (click)="seleccionarFecha(dia)">
+            {{ dia.fecha | date: 'dd/MM/yyyy' }}
+        </div>
+    </div>
+</div>
