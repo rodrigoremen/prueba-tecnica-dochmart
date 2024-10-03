@@ -4,9 +4,11 @@
 
         <div class="mb-4">
             <label class="block text-sm font-medium">Nombre</label>
-            <input formControlName="nombre" class="bg-white/50 text-black mt-1 block w-full border border-slate-700 rounded-md shadow-sm p-2"
+            <input formControlName="nombre"
+                class="bg-white/50 text-black mt-1 block w-full border border-slate-700 rounded-md shadow-sm p-2"
                 type="text" required>
-            <div *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)" class="text-red-500 font-bold text-sm mt-1">
+            <div *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)"
+                class="text-red-500 font-bold text-sm mt-1">
                 <div *ngIf="nombre?.errors?.['required']">El nombre es requerido.</div>
                 <div *ngIf="nombre?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
             </div>
@@ -14,9 +16,11 @@
 
         <div class="mb-4">
             <label class="block text-sm font-medium">Correo</label>
-            <input formControlName="correo" class="bg-white/50 text-black last:mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            <input formControlName="correo"
+                class="bg-white/50 text-black last:mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 type="email" required>
-            <div *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)" class="text-red-500 font-bold text-sm mt-1">
+            <div *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)"
+                class="text-red-500 font-bold text-sm mt-1">
                 <div *ngIf="correo?.errors?.['required']">El correo es requerido.</div>
                 <div *ngIf="correo?.errors?.['email']">El correo no es válido.</div>
             </div>
@@ -24,9 +28,11 @@
 
         <div class="mb-4">
             <label class="block text-sm font-medium">Teléfono</label>
-            <input formControlName="telefono" class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            <input formControlName="telefono"
+                class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 type="number" required>
-            <div *ngIf="telefono?.invalid && (telefono?.dirty || telefono?.touched)" class="text-red-500 font-bold text-sm mt-1">
+            <div *ngIf="telefono?.invalid && (telefono?.dirty || telefono?.touched)"
+                class="text-red-500 font-bold text-sm mt-1">
                 <div *ngIf="telefono?.errors?.['required']">El teléfono es requerido.</div>
                 <div *ngIf="telefono?.errors?.['pattern']">El teléfono debe tener 10 dígitos.</div>
             </div>
@@ -34,7 +40,8 @@
 
         <div class="mb-4">
             <label class="block text-sm font-medium">Fecha</label>
-            <input formControlName="fecha" class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            <input formControlName="fecha"
+                class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 type="text" required readonly>
             <div *ngIf="fecha?.invalid && (fecha?.dirty || fecha?.touched)" class="text-red-500 font-bold text-sm mt-1">
                 <div *ngIf="fecha?.errors?.['required']">La fecha es requerida.</div>
@@ -43,7 +50,8 @@
 
         <div class="mb-4">
             <label class="block text-sm font-medium">Hora</label>
-            <input formControlName="hora" class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+            <input formControlName="hora"
+                class="bg-white/50 text-black mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 type="text" required readonly>
             <div *ngIf="hora?.invalid && (hora?.dirty || hora?.touched)" class="text-red-500 font-bold text-sm mt-1">
                 <div *ngIf="hora?.errors?.['required']">La hora es requerida.</div>

@@ -19,15 +19,14 @@ export class ReservaComponent {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       correo: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      fecha: ['', Validators.required], // Pasar la fecha seleccionada
-      hora: ['', Validators.required],  // Pasar la hora seleccionada
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
     });
 
-    // Recoger los datos del state
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       const { fecha, hora } = navigation.extras.state;
-      this.reservaForm.patchValue({ fecha: fecha, hora: hora }); // Rellenar el formulario con la fecha y hora
+      this.reservaForm.patchValue({ fecha: fecha, hora: hora });
     }
   }
 
@@ -35,7 +34,6 @@ export class ReservaComponent {
     if (this.reservaForm.valid) {
       const reservaData = this.reservaForm.value;
       console.log('Datos de la reserva:', reservaData);
-      // Redirigir al resumen de la reserva
       this.router.navigate(['/resumen', reservaData.fecha, reservaData.hora], {
         state: {
           nombre: reservaData.nombre,

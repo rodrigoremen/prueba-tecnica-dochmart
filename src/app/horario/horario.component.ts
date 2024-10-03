@@ -16,13 +16,10 @@ export class HorarioComponent implements OnInit {
   fechaSeleccionada: string | null = null;
   horarios: any[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private reservaService: ReservaService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private reservaService: ReservaService) { }
 
   ngOnInit(): void {
-    // Obtener la fecha seleccionada de la ruta
     this.fechaSeleccionada = this.route.snapshot.paramMap.get('fecha');
-    
-    // Obtener los horarios de la fecha seleccionada
     if (this.fechaSeleccionada) {
       this.getHorarios(this.fechaSeleccionada);
     }

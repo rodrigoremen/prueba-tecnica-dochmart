@@ -81,29 +81,22 @@ export class ReservaService {
   }
 
   reservarHorario(fecha: string, hora: string): Observable<boolean> {
-    // 1. Buscar la fecha y el horario en el array `reservas`
     const reserva = this.reservas.find((r) => r.fecha === fecha);
     if (reserva) {
       const horario = reserva.horarios.find((h) => h.hora === hora);
       if (horario && horario.estado === 'D') {
-        // 2. Cambiar el estado a "Ocupado"
         horario.estado = 'O';
-
-        // 3. Crear una copia de la reserva para `misReservas`
         const nuevaReserva = { fecha, horarios: [{ hora, estado: 'O' }] };
-
-        // 4. Si la fecha ya está en `misReservas`, agregar el horario
         const reservaUsuario = this.misReservas.find((r) => r.fecha === fecha);
         if (reservaUsuario) {
           reservaUsuario.horarios.push({ hora, estado: 'O' });
         } else {
-          // Si no existe, agregar la fecha con el horario
           this.misReservas.push(nuevaReserva);
         }
 
-        return of(true); // Reserva exitosa
+        return of(true);
       }
     }
-    return of(false); // No se pudo hacer la reserva
+    return of(false);
   }
 }

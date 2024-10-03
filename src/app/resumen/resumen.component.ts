@@ -21,7 +21,7 @@ export class ResumenComponent {
   constructor(private route: ActivatedRoute, private router: Router, private reservaService: ReservaService) {
     this.fecha = this.route.snapshot.paramMap.get('fecha');
     this.hora = this.route.snapshot.paramMap.get('hora');
-    
+
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       const { nombre, correo, telefono } = navigation.extras.state;
@@ -37,7 +37,7 @@ export class ResumenComponent {
         if (success) {
           console.log('Reserva confirmada con éxito');
           toast.success('Tu reserva ha sido confirmada con éxito.');
-          this.router.navigate(['/']); 
+          this.router.navigate(['/']);
         } else {
           console.log('No se pudo realizar la reserva');
           toast.error('No se pudo realizar la reserva. Intenta de nuevo más tarde.');

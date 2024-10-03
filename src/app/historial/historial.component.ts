@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-  misReservas: any[] = []; 
+  misReservas: any[] = [];
 
-  constructor(private reservaService: ReservaService) {}
+  constructor(private reservaService: ReservaService) { }
 
   ngOnInit(): void {
     this.getMisReservas();

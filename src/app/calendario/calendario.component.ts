@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [CommonModule],
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css'],
 })
 export class CalendarioComponent implements OnInit {
   diasDisponibles: any[] = [];
 
-  constructor(private reservaService: ReservaService, private router: Router) {}
+  constructor(private reservaService: ReservaService, private router: Router) { }
 
   ngOnInit(): void {
     this.getReservas();
@@ -28,12 +28,10 @@ export class CalendarioComponent implements OnInit {
     });
   }
 
-  // Modifica este método para navegar a la selección de horarios
   seleccionarFecha(dia: any): void {
     if (dia.disponible) {
       console.log('Fecha seleccionada:', dia.fecha);
-      // Redirigir a la página de selección de horarios
-      this.router.navigate(['/horarios', dia.fecha]); // Utiliza el Router para navegar
+      this.router.navigate(['/horarios', dia.fecha]);
     }
   }
 }
