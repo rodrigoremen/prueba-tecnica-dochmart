@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaService } from '../service/reservas.service';
 import { CommonModule } from '@angular/common';
+import { toast } from 'ngx-sonner';
+
 
 @Component({
   selector: 'app-horario',
@@ -26,6 +28,14 @@ export class HorarioComponent implements OnInit {
     }
   }
 
+  manejarClick(horario: any): void {
+    if (horario.estado === 'D') {
+      this.reservar(horario.hora);
+    } else if (horario.estado === 'O') {
+      toast.error('Horario ocupado');
+    }
+  }
+
   getHorarios(fecha: string): void {
     this.reservaService.getReservas().subscribe((reservas) => {
       const reserva = reservas.find((r) => r.fecha === fecha);
@@ -37,7 +47,6 @@ export class HorarioComponent implements OnInit {
 
   reservar(hora: string): void {
     if (this.fechaSeleccionada) {
-      // Aquí redirigimos a la página de reserva con los datos de fecha y hora
       this.router.navigate(['/reserva'], { state: { fecha: this.fechaSeleccionada, hora: hora } });
     }
   }

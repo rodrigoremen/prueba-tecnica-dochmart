@@ -15,13 +15,12 @@ export class ReservaComponent {
   reservaForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
-    // Inicializa el formulario
     this.reservaForm = this.fb.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
       correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', Validators.required],
-      fecha: [''], // Pasar la fecha seleccionada
-      hora: [''],  // Pasar la hora seleccionada
+      telefono: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      fecha: ['', Validators.required], // Pasar la fecha seleccionada
+      hora: ['', Validators.required],  // Pasar la hora seleccionada
     });
 
     // Recoger los datos del state
@@ -44,6 +43,28 @@ export class ReservaComponent {
           telefono: reservaData.telefono,
         }
       });
+    } else {
+      this.reservaForm.markAllAsTouched();
     }
+  }
+
+  get nombre() {
+    return this.reservaForm.get('nombre');
+  }
+
+  get correo() {
+    return this.reservaForm.get('correo');
+  }
+
+  get telefono() {
+    return this.reservaForm.get('telefono');
+  }
+
+  get fecha() {
+    return this.reservaForm.get('fecha');
+  }
+
+  get hora() {
+    return this.reservaForm.get('hora');
   }
 }

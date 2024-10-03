@@ -10,18 +10,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-  reservas: any[] = [];  // Lista de reservas anteriores
+  misReservas: any[] = []; 
 
-  constructor(private reservaService: ReservaService) { }
+  constructor(private reservaService: ReservaService) {}
 
   ngOnInit(): void {
-    this.getReservasAnteriores();
+    this.getMisReservas();
   }
 
-  getReservasAnteriores(): void {
-    this.reservaService.getReservas().subscribe((reservas) => {
-      this.reservas = reservas;
-      console.log('Reservas obtenidas:', this.reservas);
+  getMisReservas(): void {
+    this.reservaService.getMisReservas().subscribe((reservas) => {
+      this.misReservas = reservas;
+      console.log('Mis Reservas:', this.misReservas);
     });
   }
 }

@@ -1,14 +1,13 @@
-<section class="justify-center">
-    <h1 class="text-2xl font-bold mb-4">Calendario de Disponibilidad</h1>
+<section class="flex flex-col items-center justify-center p-4 mt-0 md:mt-16">
+    <h1 class="text-2xl font-bold mb-4 text-center text-wrap">Calendario de disponibilidad del mes de Septiembre 🗓️</h1>
 
-    <!-- Si no hay días disponibles, mostrar un mensaje -->
-    <div *ngIf="diasDisponibles.length === 0" class="text-red-500">No hay fechas disponibles ahora</div>
+    <div *ngIf="diasDisponibles.length === 0" class="text-red-500 text-center">No hay fechas disponibles ahora</div>
 
-    <!-- Mostrar el calendario solo si hay días -->
-    <div *ngIf="diasDisponibles.length > 0" class="grid grid-cols-7 gap-4">
-        <!-- Iteramos sobre los días disponibles -->
+    <div *ngIf="diasDisponibles.length > 0"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 w-full max-w-7xl">
         <div *ngFor="let dia of diasDisponibles" [class.bg-green-500]="dia.disponible"
-            [class.bg-red-500]="!dia.disponible" class="text-white p-2 rounded cursor-pointer"
+            [class.bg-red-500]="!dia.disponible"
+            class="text-white p-2 rounded cursor-pointer text-center hover:bg-opacity-60 transition duration-300 ease-in-out"
             (click)="seleccionarFecha(dia)">
             {{ dia.fecha | date: 'dd/MM/yyyy' }}
         </div>

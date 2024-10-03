@@ -1,24 +1,26 @@
 <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Historial de Reservas</h1>
-
-    <table class="table-auto w-full border-collapse border border-gray-200">
-        <thead>
-            <tr class="bg-gray-100">
-                <th class="border px-4 py-2">Fecha</th>
-                <th class="border px-4 py-2">Hora</th>
-                <th class="border px-4 py-2">Nombre</th>
-                <th class="border px-4 py-2">Correo</th>
-                <th class="border px-4 py-2">Teléfono</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let reserva of reservas">
-                <td class="border px-4 py-2">{{ reserva.fecha }}</td>
-                <td class="border px-4 py-2">{{ reserva.hora }}</td>
-                <td class="border px-4 py-2">{{ reserva.nombre }}</td>
-                <td class="border px-4 py-2">{{ reserva.correo }}</td>
-                <td class="border px-4 py-2">{{ reserva.telefono }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1 class="text-3xl font-bold mb-6 text-center text-white">Mis Reservas Anteriores</h1>
+    <div *ngIf="misReservas.length === 0" class="text-center text-gray-200">
+        No tienes reservas anteriores.
+    </div>
+    <div *ngIf="misReservas.length > 0" class="overflow-x-auto">
+        <table class="min-w-full divide-y-2 divide-gray-200 bg-transparent text-sm">
+            <thead class="ltr:text-left rtl:text-right">
+                <tr>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">Fecha</th>
+                    <th class="whitespace-nowrap px-4 py-2 font-medium text-white">Hora</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr *ngFor="let reserva of misReservas">
+                    <td class="whitespace-nowrap px-4 py-2 font-medium text-white">{{ reserva.fecha }}</td>
+                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        <span *ngFor="let horario of reserva.horarios" class="mr-2 bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {{ horario.hora }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
